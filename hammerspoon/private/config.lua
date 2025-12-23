@@ -39,25 +39,25 @@ end
 -- [システム環境設定]->[キーボード]->[ショートカット]->[Mission Control]
 
 -- mac の Finder を新しく開く
-hs.hotkey.bind({'cmd'}, 'e', function()
+hs.hotkey.bind({'alt'}, 'e', function()
   hs.application.launchOrFocus("Finder")
   spoon.WinWin:moveAndResize("maximize")
 end)
 
 -- Slack にフォーカス
-hs.hotkey.bind({'cmd'}, 'g', function()
+hs.hotkey.bind({'alt'}, 'g', function()
   hs.application.launchOrFocus("Slack")
   spoon.WinWin:moveAndResize("maximize")
 end)
 
 -- Firefox にフォーカス
-hs.hotkey.bind({'cmd'}, 'm', function()
+hs.hotkey.bind({'alt'}, 'm', function()
   hs.application.launchOrFocus("Firefox")
   spoon.WinWin:moveAndResize("maximize")
 end)
 
 -- Asanaにフォーカス
-hs.hotkey.bind({'cmd'}, '/', function()
+hs.hotkey.bind({'alt'}, '/', function()
   hs.application.launchOrFocus("Asana")
   spoon.WinWin:moveAndResize("maximize")
 end)
@@ -81,68 +81,68 @@ end)
 -- end)
 
 -- Wezterm にフォーカス
-hs.hotkey.bind({'cmd'}, 'n', function()
+hs.hotkey.bind({'alt'}, 'n', function()
   hs.application.launchOrFocus("Wezterm")
   spoon.WinWin:moveAndResize("maximize")
 end)
 
 -- Obsibian にフォーカス
-hs.hotkey.bind({'cmd'}, ',', function()
+hs.hotkey.bind({'alt'}, ',', function()
   hs.application.launchOrFocus("Obsidian")
   spoon.WinWin:moveAndResize("maximize")
 end)
 
 -- Chrome にフォーカス
-hs.hotkey.bind({'cmd'}, '.', function()
+hs.hotkey.bind({'alt'}, '.', function()
   hs.application.launchOrFocus("Google Chrome")
   spoon.WinWin:moveAndResize("maximize")
 end)
 
 -- ウィンドウを左へ
-hs.hotkey.bind({'cmd', 'shift'}, 'h', function()
+hs.hotkey.bind({'alt', 'shift'}, 'h', function()
   spoon.WinWin:moveToScreen("left")
   spoon.WinWin:moveAndResize("maximize")
 end)
 
 -- ウィンドウを下へ
-hs.hotkey.bind({'cmd', 'shift'}, 'j', function()
+hs.hotkey.bind({'alt', 'shift'}, 'j', function()
   spoon.WinWin:moveToScreen("down")
   spoon.WinWin:moveAndResize("maximize")
 end)
 
 -- ウィンドウを上へ
-hs.hotkey.bind({'cmd', 'shift'}, 'k', function()
+hs.hotkey.bind({'alt', 'shift'}, 'k', function()
   spoon.WinWin:moveToScreen("up")
   spoon.WinWin:moveAndResize("maximize")
 end)
 
 -- ウィンドウを右へ
-hs.hotkey.bind({'cmd', 'shift'}, 'l', function()
+hs.hotkey.bind({'alt', 'shift'}, 'l', function()
   spoon.WinWin:moveToScreen("right")
   spoon.WinWin:moveAndResize("maximize")
 end)
 
 -- ウィンドウを左半分
-hs.hotkey.bind({'cmd', 'ctrl'}, 'h', function()
+hs.hotkey.bind({'alt', 'ctrl'}, 'h', function()
   spoon.WinWin:moveAndResize("halfleft")
 end)
 
 -- ウィンドウを下半分
-hs.hotkey.bind({'cmd', 'ctrl'}, 'j', function()
+hs.hotkey.bind({'alt', 'ctrl'}, 'j', function()
   spoon.WinWin:moveAndResize("halfdown")
 end)
 
 -- ウィンドウを上半分
-hs.hotkey.bind({'cmd', 'ctrl'}, 'k', function()
+hs.hotkey.bind({'alt', 'ctrl'}, 'k', function()
   spoon.WinWin:moveAndResize("halfup")
 end)
 
 -- ウィンドウを右半分
-hs.hotkey.bind({'cmd', 'ctrl'}, 'l', function()
+hs.hotkey.bind({'alt', 'ctrl'}, 'l', function()
   spoon.WinWin:moveAndResize("halfright")
 end)
 
--- タスクスイッチャー command + t
+-- タスクスイッチャー alt + t
 function switchToNextWindow()
     local app = hs.application.frontmostApplication()
     local windows = app:visibleWindows() -- 現在のアプリのすべての可視ウィンドウを取得
@@ -167,8 +167,8 @@ function switchToNextWindow()
     windows[nextWindowIndex]:focus() -- 次のウィンドウにフォーカスを移動
 end
 
--- キーボードショートカットを設定（例: Cmd + Alt + N）
-hs.hotkey.bind({"cmd"}, "t", function()
+-- キーボードショートカットを設定（例: Alt + t）
+hs.hotkey.bind({"alt"}, "t", function()
   switchToNextWindow()
 end)
 
@@ -237,7 +237,7 @@ end
 -- 
 -- --- アプリケーション・スイッチャ
 -- --- http://www.hammerspoon.org/docs/hs.window.switcher.html#nextWindow
-hs.hotkey.bind({'ctrl', 'cmd'}, 'f', function()
+hs.hotkey.bind({'ctrl', 'alt'}, 'f', function()
   hs.window.switcher.nextWindow()
 end)
 

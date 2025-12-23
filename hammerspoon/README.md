@@ -1,134 +1,133 @@
-# awesome-hammerspoon configuration
+# awesome-hammerspoon 設定まとめ
 
-awesome-hammerspoon is my configuration for [Hammerspoon](http://www.hammerspoon.org/). It has highly modal-based, vim-style keybindings, provides some functionality like desktop widgets, window management, application launcher, instant search, aria2 frontend ... etc.
+[Hammerspoon](http://www.hammerspoon.org/) を強く Vim 的なモーダル操作で使うための設定です。デスクトップウィジェット、ウィンドウ管理、アプリランチャー、インスタント検索、aria2 フロントエンドなどを提供します。
 
-## Get started
+## Kaoru の macOS 用設定（このリポジトリ）
 
-1. Install [Hammerspoon](http://www.hammerspoon.org/) first.
+- 設定読み込み順: `~/.config/hammerspoon/private/config.lua` があれば優先、無ければ `~/.hammerspoon/private/config.lua` を使用。リロードは `cmd` + `shift` + `ctrl` + `R`。
+- 使用 Spoons: `ModalMgr`（明示的ロード）、`WinWin`、`EmmyLua`。各モード内で `tab` を押すとチートシート表示。
+- モーダル／グローバルホットキー: `alt` 系のトリガーは現状すべて無効化（キー未設定）。必要なら `init.lua` の `hs*_keys` を好みの組み合わせに変更して有効化してください。
+  - `cmd` + `R`: ウィンドウ移動・リサイズモード。`H/J/K/L` で左右上下半分、`A/D/W/S` で微移動、`Y/U/I/O` で四隅、`F` 全画面、`C` 中央寄せ、`=`/`-` で拡大・縮小、矢印や `space` でモニタ移動、`[`/`]` で undo/redo、`` ` `` でマウスを中央へ。
+- アプリ起動ショートカット（`private/config.lua`）: `alt`+`e` Finder, `alt`+`g` Slack, `alt`+`m` Firefox, `alt`+`/` Asana, `alt`+`n` Wezterm, `alt`+`,` Obsidian, `alt`+`.` Google Chrome。起動後は `WinWin` で最大化。
+- 画面・ウィンドウ配置: `alt`+`shift`+`h/j/k/l` で左右上下のモニタへ移動＆最大化。`alt`+`ctrl`+`h/j/k/l` で現在モニタの左右上下半分にスナップ。
+- ウィンドウ切替: `alt`+`t` で現在アプリの可視ウィンドウをタイトル順に循環。`ctrl`+`alt`+`f` で Hammerspoon 標準のウィンドウスイッチャー（`hs.window.switcher.nextWindow()`）。
+- ViMouse（`vimouse.lua`）: キーボードでマウス操作するモード。`init.lua` への例:
+  ```lua
+  local vimouse = require('vimouse')
+  vimouse({'cmd'}, 'm') -- cmd+m でトグル
+  ```
+  h/j/k/l で移動（alt 低速、shift 高速）、`space` でクリック／ドラッグ（ctrl+space で右クリック）、`ctrl+y` / `ctrl+e` でスクロール、`esc` またはトグルキーで終了。
 
+## はじめに
+
+1. 先に [Hammerspoon](http://www.hammerspoon.org/) をインストール。
 2. `git clone https://github.com/ashfinal/awesome-hammerspoon.git ~/.hammerspoon`
+3. 設定をリロード。
 
-3. Reload the configutation.
-
-## Keep update
+## 更新方法
 
 `cd ~/.hammerspoon && git pull`
 
-## How to use
+## 使い方
 
-Just press <kbd>opt</kbd>, plus <kbd>A</kbd> or <kbd>C</kbd> or <kbd>R</kbd>… to start. If need help, press <kbd>tab</kbd> to toggle the keybindings cheatsheet.
+`opt` を押しながら `A` / `C` / `R` などで開始。困ったときは `tab` でキーバインドのチートシートを表示。
 
-Press <kbd>opt</kbd> + <kbd>?</kbd> to toggle the help panel, which will show all <kbd>opt</kbd> related keybindings.
+`opt` + `?` でヘルプパネルを表示し、`opt` 系の全キーバインドを確認できます。
 
-### Screenshots
+### スクリーンショット
 
-These screenshots demostrate what awesome-hammerspoon is capable of. Learn more about [built-in Spoons](https://github.com/ashfinal/awesome-hammerspoon/wiki/The-built-in-Spoons).
+awesome-hammerspoon の機能例。組み込み Spoons はこちら: [The built-in Spoons](https://github.com/ashfinal/awesome-hammerspoon/wiki/The-built-in-Spoons)
 
-#### Desktop widgets
+#### デスクトップウィジェット
 
 <details>
-<summary>More details</summary>
+<summary>詳細</summary>
 
 ![widgets](https://github.com/ashfinal/bindata/raw/master/screenshots/awesome-hammerspoon-deskwidgets.png)
 
 </details>
 
-#### Window manpulation <kbd>⌥</kbd> + <kbd>R</kbd>
+#### ウィンドウ操作 <kbd>⌥</kbd> + <kbd>R</kbd>
 
 <details>
-<summary>More details</summary>
+<summary>詳細</summary>
 
 ![winresize](https://github.com/ashfinal/bindata/raw/master/screenshots/awesome-hammerspoon-winresize.gif)
 
 </details>
 
-#### Search something <kbd>⌥</kbd> + <kbd>G</kbd>
+#### 検索 <kbd>⌥</kbd> + <kbd>G</kbd>
 
 <details>
-<summary>More details</summary>
+<summary>詳細</summary>
 
 ![hsearch](https://github.com/ashfinal/bindata/raw/master/screenshots/awesome-hammerspoon-hsearch.gif)
 
 </details>
 
-#### aria2 Frontend <kbd>⌥</kbd> + <kbd>D</kbd>
+#### aria2 フロントエンド <kbd>⌥</kbd> + <kbd>D</kbd>
 
 <details>
-<summary>More details</summary>
+<summary>詳細</summary>
 
 ![hsearch](https://github.com/ashfinal/bindata/raw/master/screenshots/awesome-hammerspoon-aria2.png)
 
-You need to [run aria2 with RPC enabled](https://github.com/ashfinal/awesome-hammerspoon/wiki/Run-aria2-with-rpc-enabled) before using this. Config aria2 host and token in `~/.hammerspoon/private/config.lua`, then you're ready to go.
+使う前に [RPC 有効で aria2 を起動](https://github.com/ashfinal/awesome-hammerspoon/wiki/Run-aria2-with-rpc-enabled) してください。`~/.hammerspoon/private/config.lua` にホストとトークンを設定します。
 
 ```lua
-hsaria2_host = "http://localhost:6800/jsonrpc" -- default host
-hsaria2_secret = "token" -- YOUR OWN SECRET
+hsaria2_host = "http://localhost:6800/jsonrpc" -- デフォルト
+hsaria2_secret = "token" -- 自分のシークレットに置き換え
 ```
 
 </details>
 
-## Customization
+## カスタマイズ
 
 <details>
 
-<summary>More details</summary>
+<summary>詳細</summary>
 
 ```shell
 cp ~/.hammerspoon/config-example.lua ~/.hammerspoon/private/config.lua
 ```
 
-Then modify the file `~/.hammerspoon/private/config.lua`:
+その後 `~/.hammerspoon/private/config.lua` を編集:
 
-- Add/remove Spoons.
+- Spoons の追加／削除  
+  `hspoon_list` に読み込む Spoon を列挙（ビルトインは 15 個。詳細は [The built-in Spoons](https://github.com/ashfinal/awesome-hammerspoon/wiki/The-built-in-Spoons)）。
+  *公式リポジトリにも Spoons が多数あります: [Hammerspoon Spoons](http://www.hammerspoon.org/Spoons/)（一部は追加設定が必要）。*
 
-  Define `hspoon_list` to decide which Spoons (a distributing format of Hammerspoon module) to be loaded. There are 15 built-in Spoons, learn about them at [here](https://github.com/ashfinal/awesome-hammerspoon/wiki/The-built-in-Spoons).
+- キーバインドの変更  
+  詳細は `~/.hammerspoon/private/config.lua` を参照。
 
-  *There are more Spoons at [official spoon repository](http://www.hammerspoon.org/Spoons/) (you may need a little config before using them).*
-
-- Customize keybindings
-
-  Please read `~/.hammerspoon/private/config.lua`for more details.
-
-Finally press `cmd + ctrl + shift + r` to reload the configuration.
+編集後は `cmd + ctrl + shift + r` でリロード。
 
 </details>
 
-## Contribute
+## コントリビュート
 
 <details>
-<summary>More details</summary>
+<summary>詳細</summary>
 
-- Improve existing Spoons
+- 既存 Spoons の改善  
+  Spoon は単なるディレクトリです。右クリック→「パッケージの内容を表示」で編集できます。Issue / PR 歓迎。
 
-  A "Spoon" is just a directory, right-click on it -> "Show Package Contents".
-
-  Feel free to file issues or open PRs.
-
-- Create new Spoons
-
-  Some resources you may find helpful:
-
-  [Learn Lua in Y minutes](http://learnxinyminutes.com/docs/lua/)
-
-  [Getting Started with Hammerspoon](http://www.hammerspoon.org/go/)
-
-  [Hammerspoon API Docs](http://www.hammerspoon.org/docs/index.html)
-
-  [hammerspoon/SPOONS.md at master · Hammerspoon/hammerspoon](https://github.com/Hammerspoon/hammerspoon/blob/master/SPOONS.md)
+- 新しい Spoons の作成に役立つリンク  
+  [Learn Lua in Y minutes](http://learnxinyminutes.com/docs/lua/)  
+  [Getting Started with Hammerspoon](http://www.hammerspoon.org/go/)  
+  [Hammerspoon API Docs](http://www.hammerspoon.org/docs/index.html)  
+  [hammerspoon/SPOONS.md](https://github.com/Hammerspoon/hammerspoon/blob/master/SPOONS.md)
 
 </details>
 
 ## Thanks to
 
 <details>
-<summary>More details</summary>
+<summary>詳細</summary>
 
-[https://github.com/zzamboni/oh-my-hammerspoon](https://github.com/zzamboni/oh-my-hammerspoon)
-
-[https://github.com/scottcs/dot_hammerspoon](https://github.com/scottcs/dot_hammerspoon)
-
-[https://github.com/dharmapoudel/hammerspoon-config](https://github.com/dharmapoudel/hammerspoon-config)
-
+[https://github.com/zzamboni/oh-my-hammerspoon](https://github.com/zzamboni/oh-my-hammerspoon)  
+[https://github.com/scottcs/dot_hammerspoon](https://github.com/scottcs/dot_hammerspoon)  
+[https://github.com/dharmapoudel/hammerspoon-config](https://github.com/dharmapoudel/hammerspoon-config)  
 [http://tracesof.net/uebersicht/](http://tracesof.net/uebersicht/)
 
 </details>

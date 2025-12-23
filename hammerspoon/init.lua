@@ -52,7 +52,7 @@ end
 -- Then we create/register all kinds of modal keybindings environments.
 ----------------------------------------------------------------------------------------------------
 -- Register windowHints (Register a keybinding which is NOT modal environment with modal supervisor)
-hswhints_keys = hswhints_keys or {"alt", "tab"}
+hswhints_keys = hswhints_keys or {"", ""}
 if string.len(hswhints_keys[2]) > 0 then
     spoon.ModalMgr.supervisor:bind(hswhints_keys[1], hswhints_keys[2], 'Show Window Hints', function()
         spoon.ModalMgr:deactivateAll()
@@ -95,7 +95,7 @@ for _, v in ipairs(hsapp_list) do
 end
 
 -- Then we register some keybindings with modal supervisor
-hsappM_keys = hsappM_keys or {"alt", "A"}
+hsappM_keys = hsappM_keys or {"", ""}
 if string.len(hsappM_keys[2]) > 0 then
     spoon.ModalMgr.supervisor:bind(hsappM_keys[1], hsappM_keys[2], "Enter AppM Environment", function()
         spoon.ModalMgr:deactivateAll()
@@ -160,7 +160,7 @@ if spoon.ClipShow then
     end)
 
     -- Register clipshowM with modal supervisor
-    hsclipsM_keys = hsclipsM_keys or {"alt", "C"}
+    hsclipsM_keys = hsclipsM_keys or {"", ""}
     if string.len(hsclipsM_keys[2]) > 0 then
         spoon.ModalMgr.supervisor:bind(hsclipsM_keys[1], hsclipsM_keys[2], "Enter clipshowM Environment", function()
             -- We need to take action upon hsclipsM_keys is pressed, since pressing another key to showing ClipShow panel is redundant.
@@ -182,7 +182,7 @@ if spoon.HSaria2 then
     hsaria2_secret = hsaria2_secret or "token"
     spoon.HSaria2:connectToHost(hsaria2_host, hsaria2_secret)
 
-    hsaria2_keys = hsaria2_keys or {"alt", "D"}
+    hsaria2_keys = hsaria2_keys or {"", ""}
     if string.len(hsaria2_keys[2]) > 0 then
         spoon.ModalMgr.supervisor:bind(hsaria2_keys[1], hsaria2_keys[2], 'Toggle aria2 Panel', function() spoon.HSaria2:togglePanel() end)
     end
@@ -191,7 +191,7 @@ end
 ----------------------------------------------------------------------------------------------------
 -- Register Hammerspoon Search
 if spoon.HSearch then
-    hsearch_keys = hsearch_keys or {"alt", "G"}
+    hsearch_keys = hsearch_keys or {"", ""}
     if string.len(hsearch_keys[2]) > 0 then
         spoon.ModalMgr.supervisor:bind(hsearch_keys[1], hsearch_keys[2], 'Launch Hammerspoon Search', function() spoon.HSearch:toggleShow() end)
     end
@@ -236,7 +236,7 @@ if spoon.CountDown then
     end)
 
     -- Register countdownM with modal supervisor
-    hscountdM_keys = hscountdM_keys or {"alt", "I"}
+    hscountdM_keys = hscountdM_keys or {"", ""}
     if string.len(hscountdM_keys[2]) > 0 then
         spoon.ModalMgr.supervisor:bind(hscountdM_keys[1], hscountdM_keys[2], "Enter countdownM Environment", function()
             spoon.ModalMgr:deactivateAll()
@@ -332,7 +332,7 @@ end
 ----------------------------------------------------------------------------------------------------
 -- Register AClock
 if spoon.AClock then
-    hsaclock_keys = hsaclock_keys or {"alt", "T"}
+    hsaclock_keys = hsaclock_keys or {"", ""}
     if string.len(hsaclock_keys[2]) > 0 then
         spoon.ModalMgr.supervisor:bind(hsaclock_keys[1], hsaclock_keys[2], "Toggle Floating Clock", function() spoon.AClock:toggleShow() end)
     end
@@ -340,7 +340,7 @@ end
 
 ----------------------------------------------------------------------------------------------------
 -- Register browser tab typist: Type URL of current tab of running browser in markdown format. i.e. [title](link)
-hstype_keys = hstype_keys or {"alt", "V"}
+hstype_keys = hstype_keys or {"", ""}
 if string.len(hstype_keys[2]) > 0 then
     spoon.ModalMgr.supervisor:bind(hstype_keys[1], hstype_keys[2], "Type Browser Link", function()
         local safari_running = hs.application.applicationsForBundleID("com.apple.Safari")
@@ -357,7 +357,7 @@ end
 
 ----------------------------------------------------------------------------------------------------
 -- Register Hammerspoon console
-hsconsole_keys = hsconsole_keys or {"alt", "Z"}
+hsconsole_keys = hsconsole_keys or {"", ""}
 if string.len(hsconsole_keys[2]) > 0 then
     spoon.ModalMgr.supervisor:bind(hsconsole_keys[1], hsconsole_keys[2], "Toggle Hammerspoon Console", function() hs.toggleConsole() end)
 end
