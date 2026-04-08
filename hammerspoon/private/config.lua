@@ -8,6 +8,8 @@
   http://qiita.com/naoya@github/items/81027083aeb70b309c14
   keyCode('return')と渡すとキーコードを返してくれるような関数っぽい
 ]]
+local winops = require("winops")
+
 local function keyCode(key, modifiers)
    modifiers = modifiers or {}
    return function()
@@ -41,25 +43,25 @@ end
 -- mac の Finder を新しく開く
 hs.hotkey.bind({'alt'}, 'e', function()
   hs.application.launchOrFocus("Finder")
-  spoon.WinWin:moveAndResize("maximize")
+  winops.moveAndResize("maximize")
 end)
 
 -- Slack にフォーカス
 hs.hotkey.bind({'alt'}, 'g', function()
   hs.application.launchOrFocus("Slack")
-  spoon.WinWin:moveAndResize("maximize")
+  winops.moveAndResize("maximize")
 end)
 
 -- Firefox にフォーカス
 hs.hotkey.bind({'alt'}, 'm', function()
   hs.application.launchOrFocus("Firefox")
-  spoon.WinWin:moveAndResize("maximize")
+  winops.moveAndResize("maximize")
 end)
 
 -- Asanaにフォーカス
 hs.hotkey.bind({'alt'}, '/', function()
   hs.application.launchOrFocus("Asana")
-  spoon.WinWin:moveAndResize("maximize")
+  winops.moveAndResize("maximize")
 end)
 
 -- -- Meetをアクティブにする
@@ -83,63 +85,63 @@ end)
 -- Wezterm にフォーカス
 hs.hotkey.bind({'alt'}, 'n', function()
   hs.application.launchOrFocus("Wezterm")
-  spoon.WinWin:moveAndResize("maximize")
+  winops.moveAndResize("maximize")
 end)
 
 -- Obsibian にフォーカス
 hs.hotkey.bind({'alt'}, ',', function()
   hs.application.launchOrFocus("Obsidian")
-  spoon.WinWin:moveAndResize("maximize")
+  winops.moveAndResize("maximize")
 end)
 
 -- Chrome にフォーカス
 hs.hotkey.bind({'alt'}, '.', function()
   hs.application.launchOrFocus("Google Chrome")
-  spoon.WinWin:moveAndResize("maximize")
+  winops.moveAndResize("maximize")
 end)
 
 -- ウィンドウを左へ
 hs.hotkey.bind({'alt', 'shift'}, 'h', function()
-  spoon.WinWin:moveToScreen("left")
-  spoon.WinWin:moveAndResize("maximize")
+  winops.moveToScreen("left")
+  winops.moveAndResize("maximize")
 end)
 
 -- ウィンドウを下へ
 hs.hotkey.bind({'alt', 'shift'}, 'j', function()
-  spoon.WinWin:moveToScreen("down")
-  spoon.WinWin:moveAndResize("maximize")
+  winops.moveToScreen("down")
+  winops.moveAndResize("maximize")
 end)
 
 -- ウィンドウを上へ
 hs.hotkey.bind({'alt', 'shift'}, 'k', function()
-  spoon.WinWin:moveToScreen("up")
-  spoon.WinWin:moveAndResize("maximize")
+  winops.moveToScreen("up")
+  winops.moveAndResize("maximize")
 end)
 
 -- ウィンドウを右へ
 hs.hotkey.bind({'alt', 'shift'}, 'l', function()
-  spoon.WinWin:moveToScreen("right")
-  spoon.WinWin:moveAndResize("maximize")
+  winops.moveToScreen("right")
+  winops.moveAndResize("maximize")
 end)
 
 -- ウィンドウを左半分
 hs.hotkey.bind({'alt', 'ctrl'}, 'h', function()
-  spoon.WinWin:moveAndResize("halfleft")
+  winops.moveAndResize("halfleft")
 end)
 
 -- ウィンドウを下半分
 hs.hotkey.bind({'alt', 'ctrl'}, 'j', function()
-  spoon.WinWin:moveAndResize("halfdown")
+  winops.moveAndResize("halfdown")
 end)
 
 -- ウィンドウを上半分
 hs.hotkey.bind({'alt', 'ctrl'}, 'k', function()
-  spoon.WinWin:moveAndResize("halfup")
+  winops.moveAndResize("halfup")
 end)
 
 -- ウィンドウを右半分
 hs.hotkey.bind({'alt', 'ctrl'}, 'l', function()
-  spoon.WinWin:moveAndResize("halfright")
+  winops.moveAndResize("halfright")
 end)
 
 -- タスクスイッチャー alt + t
