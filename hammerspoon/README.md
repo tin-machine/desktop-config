@@ -5,10 +5,11 @@
 ## Kaoru の macOS 用設定（このリポジトリ）
 
 - 設定読み込み順: `~/.config/hammerspoon/private/config.lua` があれば優先、無ければ `~/.hammerspoon/private/config.lua` を使用。リロードは `cmd` + `shift` + `ctrl` + `R`。
-- 使用 Spoons: `ModalMgr`（明示的ロード）、`WinWin`、`EmmyLua`。各モード内で `tab` を押すとチートシート表示。
-- モーダル／グローバルホットキー: `alt` 系のトリガーは現状すべて無効化（キー未設定）。必要なら `init.lua` の `hs*_keys` を好みの組み合わせに変更して有効化してください。
-  - `cmd` + `R`: ウィンドウ移動・リサイズモード。`H/J/K/L` で左右上下半分、`A/D/W/S` で微移動、`Y/U/I/O` で四隅、`F` 全画面、`C` 中央寄せ、`=`/`-` で拡大・縮小、矢印や `space` でモニタ移動、`[`/`]` で undo/redo、`` ` `` でマウスを中央へ。
-- アプリ起動ショートカット（`private/config.lua`）: `alt`+`e` Finder, `alt`+`g` Slack, `alt`+`m` Firefox, `alt`+`/` Asana, `alt`+`n` Wezterm, `alt`+`,` Obsidian, `alt`+`.` Google Chrome。起動後は `WinWin` で最大化。
+- Spoon 依存: 必須はなし（モーダル管理はローカル `modalmgr.lua`、ウィンドウ操作はローカル `winops.lua`）。`EmmyLua` は補完用途のため任意。
+- モーダル／グローバルホットキー: モーダル起動は最小構成（`cmd+R` の `resizeM`）で、日常用のグローバルキーは `private/config.lua` に集約しています。
+  - `cmd` + `R`: ウィンドウ移動・リサイズモード。`H/J/K/L` で左右上下半分、`A/D/W/S` で微移動、`Y/U/I/O` で四隅、`F` 全画面、`C` 中央寄せ、`=`/`-` で拡大・縮小、矢印や `space` でモニタ移動、`[` で undo、`` ` `` でマウスを中央へ。
+- アプリ起動ショートカット（`private/config.lua`）: `alt`+`e` Finder, `alt`+`g` Slack, `alt`+`m` Firefox, `alt`+`/` Asana, `alt`+`n` Wezterm, `alt`+`,` Obsidian, `alt`+`.` Google Chrome。起動後は `winops` で最大化。
+- Pomodoro: `alt+d` 開始/一時停止、`alt+shift+d` 次フェーズ、`alt+ctrl+d` リセット。実装は `pomodoro.lua`。右上に残り時間ダイアログを表示し、mac 通知は無効化しています。
 - 画面・ウィンドウ配置: `alt`+`shift`+`h/j/k/l` で左右上下のモニタへ移動＆最大化。`alt`+`ctrl`+`h/j/k/l` で現在モニタの左右上下半分にスナップ。
 - ウィンドウ切替: `alt`+`t` で現在アプリの可視ウィンドウをタイトル順に循環。`ctrl`+`alt`+`f` で Hammerspoon 標準のウィンドウスイッチャー（`hs.window.switcher.nextWindow()`）。
 - ViMouse（`vimouse.lua`）: キーボードでマウス操作するモード。`init.lua` への例:

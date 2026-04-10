@@ -9,6 +9,7 @@
   keyCode('return')と渡すとキーコードを返してくれるような関数っぽい
 ]]
 local winops = require("winops")
+local pomodoro = require("pomodoro")
 
 local function keyCode(key, modifiers)
    modifiers = modifiers or {}
@@ -44,6 +45,19 @@ end
 hs.hotkey.bind({'alt'}, 'e', function()
   hs.application.launchOrFocus("Finder")
   winops.moveAndResize("maximize")
+end)
+
+-- Pomodoro timer controls
+hs.hotkey.bind({'alt'}, 'd', function()
+  pomodoro.toggle()
+end)
+
+hs.hotkey.bind({'alt', 'shift'}, 'd', function()
+  pomodoro.skip()
+end)
+
+hs.hotkey.bind({'alt', 'ctrl'}, 'd', function()
+  pomodoro.reset()
 end)
 
 -- Slack にフォーカス
