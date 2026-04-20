@@ -19,4 +19,4 @@ try {
 #!PgDn::WindowManager.moveToMonitor("prev")
 
 ; 起動時に軽く通知
-TrayTip "AHK smoke", "臨時ホットキー: Win+Alt+Home/End/PgUp/PgDn", 5, 1
+TrayTip "臨時ホットキー: Win+Alt+Home/End/PgUp/PgDn", "AHK smoke", 1

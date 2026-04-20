@@ -8,7 +8,9 @@ Common_Log(message) {
 
 Common_Notify(title, message, seconds := 3, icon := 1) {
     try {
-        TrayTip title, message, seconds, icon
+        ; AutoHotkey v2: TrayTip(Text, Title?, Options?)
+        ; `seconds` は関数互換のため受け取るが、表示時間はOS側挙動に委ねる。
+        TrayTip message, title, icon
     } catch as e {
         Common_Log("TrayTip failed: " . e.Message)
     }
