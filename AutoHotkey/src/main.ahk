@@ -3,7 +3,6 @@
 #Warn
 
 ; エントリポイント: 設定の読み込みとモジュールの #Include
-#Include "..\config\user.ahk"
 #Include "lib/common.ahk"
 #Include "lib/window_manager.ahk"
 #Include "keymap_caps_as_ctrl.ahk"
