@@ -137,6 +137,11 @@ ExitResizeMode() {
     Common_Notify("AHK", "モーダル状態をリセットしました", 2, 1)
 }
 
+; Win key copy/paste
+#c::Send "^c"
+#v::Send "^v"
+#w::Send "!{F4}"
+
 ; アプリ起動/前面化して最大化
 !e::ActivateOrRunAndMaximize("Explorer", ["explorer.exe"])
 !g::ActivateOrRunAndMaximize("Slack", ["slack.exe"])
