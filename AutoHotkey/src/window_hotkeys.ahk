@@ -140,7 +140,7 @@ ExitResizeMode() {
 ; Win key copy/paste
 #c::Send "^c"
 #v::Send "^v"
-#w::Send "!{F4}"
+^w::Send "!{F4}"
 
 ; アプリ起動/前面化して最大化
 !e::ActivateOrRunAndMaximize("Explorer", ["explorer.exe"])
