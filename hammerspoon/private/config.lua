@@ -115,46 +115,46 @@ hs.hotkey.bind({'alt'}, '.', function()
 end)
 
 -- ウィンドウを左へ
-hs.hotkey.bind({'alt', 'shift'}, 'h', function()
+hs.hotkey.bind({'alt', 'ctrl'}, 'h', function()
   winops.moveToScreen("left")
   winops.moveAndResize("maximize")
 end)
 
 -- ウィンドウを下へ
-hs.hotkey.bind({'alt', 'shift'}, 'j', function()
+hs.hotkey.bind({'alt', 'ctrl'}, 'j', function()
   winops.moveToScreen("down")
   winops.moveAndResize("maximize")
 end)
 
 -- ウィンドウを上へ
-hs.hotkey.bind({'alt', 'shift'}, 'k', function()
+hs.hotkey.bind({'alt', 'ctrl'}, 'k', function()
   winops.moveToScreen("up")
   winops.moveAndResize("maximize")
 end)
 
 -- ウィンドウを右へ
-hs.hotkey.bind({'alt', 'shift'}, 'l', function()
+hs.hotkey.bind({'alt', 'ctrl'}, 'l', function()
   winops.moveToScreen("right")
   winops.moveAndResize("maximize")
 end)
 
 -- ウィンドウを左半分
-hs.hotkey.bind({'alt', 'ctrl'}, 'h', function()
+hs.hotkey.bind({'alt', 'shift'}, 'h', function()
   winops.moveAndResize("halfleft")
 end)
 
 -- ウィンドウを下半分
-hs.hotkey.bind({'alt', 'ctrl'}, 'j', function()
+hs.hotkey.bind({'alt', 'shift'}, 'j', function()
   winops.moveAndResize("halfdown")
 end)
 
 -- ウィンドウを上半分
-hs.hotkey.bind({'alt', 'ctrl'}, 'k', function()
+hs.hotkey.bind({'alt', 'shift'}, 'k', function()
   winops.moveAndResize("halfup")
 end)
 
 -- ウィンドウを右半分
-hs.hotkey.bind({'alt', 'ctrl'}, 'l', function()
+hs.hotkey.bind({'alt', 'shift'}, 'l', function()
   winops.moveAndResize("halfright")
 end)
 

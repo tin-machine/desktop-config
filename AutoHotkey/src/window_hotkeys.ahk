@@ -1,27 +1,228 @@
 #Requires AutoHotkey v2.0
+#Include "lib/common.ahk"
 #Include "lib/window_manager.ahk"
 
-; 基本スナップ (Win + Alt + 矢印)
+global gResizeMode := false
+
+class PomodoroTimer {
+    static totalSeconds := 25 * 60
+    static remainingSeconds := 25 * 60
+    static running := false
+
+    static getTimerFn() {
+        static fn := ObjBindMethod(PomodoroTimer, "onTick")
+        return fn
+    }
+
+    static formatRemaining() {
+        mins := Floor(PomodoroTimer.remainingSeconds / 60)
+        secs := Mod(PomodoroTimer.remainingSeconds, 60)
+        return Format("{:02}:{:02}", mins, secs)
+    }
+
+    static toggle() {
+        if (PomodoroTimer.running) {
+            PomodoroTimer.running := false
+            SetTimer PomodoroTimer.getTimerFn(), 0
+            Common_Notify("Pomodoro", "一時停止 " . PomodoroTimer.formatRemaining(), 2, 1)
+            return
+        }
+
+        if (PomodoroTimer.remainingSeconds <= 0) {
+            PomodoroTimer.remainingSeconds := PomodoroTimer.totalSeconds
+        }
+        PomodoroTimer.running := true
+        SetTimer PomodoroTimer.getTimerFn(), 1000
+        Common_Notify("Pomodoro", "開始 " . PomodoroTimer.formatRemaining(), 2, 1)
+    }
+
+    static reset() {
+        PomodoroTimer.running := false
+        PomodoroTimer.remainingSeconds := PomodoroTimer.totalSeconds
+        SetTimer PomodoroTimer.getTimerFn(), 0
+        Common_Notify("Pomodoro", "リセット 25:00", 2, 1)
+    }
+
+    static skip() {
+        PomodoroTimer.running := false
+        SetTimer PomodoroTimer.getTimerFn(), 0
+        PomodoroTimer.remainingSeconds := PomodoroTimer.totalSeconds
+        Common_Notify("Pomodoro", "スキップ -> 25:00", 2, 1)
+    }
+
+    static onTick() {
+        if (!PomodoroTimer.running) {
+            return
+        }
+
+        PomodoroTimer.remainingSeconds -= 1
+        if (PomodoroTimer.remainingSeconds > 0) {
+            return
+        }
+
+        PomodoroTimer.running := false
+        PomodoroTimer.remainingSeconds := PomodoroTimer.totalSeconds
+        SetTimer PomodoroTimer.getTimerFn(), 0
+        Common_Notify("Pomodoro", "25分終了", 4, 1)
+    }
+}
+
+FindWindowByCandidates(candidates) {
+    for exe in candidates {
+        windows := WinGetList("ahk_exe " . exe)
+        if (windows.Length > 0) {
+            return windows[1]
+        }
+    }
+    return 0
+}
+
+ActivateOrRunAndMaximize(appName, candidates) {
+    hwnd := FindWindowByCandidates(candidates)
+    if (hwnd) {
+        try {
+            WinActivate hwnd
+            WinMaximize hwnd
+            return
+        } catch {
+        }
+    }
+
+    launched := false
+    for exe in candidates {
+        try {
+            Run exe
+            launched := true
+            break
+        } catch {
+        }
+    }
+
+    if (!launched) {
+        Common_Notify("App Launch", appName . " の起動に失敗しました", 3, 1)
+        return
+    }
+
+    Sleep 300
+    hwnd := FindWindowByCandidates(candidates)
+    if (!hwnd) {
+        Common_Notify("App Launch", appName . " は起動中ですがウィンドウ未検出", 3, 1)
+        return
+    }
+
+    try {
+        WinActivate hwnd
+        WinMaximize hwnd
+    } catch {
+        Common_Notify("App Launch", appName . " の前面化/最大化に失敗しました", 3, 1)
+    }
+}
+
+EnterResizeMode() {
+    global gResizeMode
+    gResizeMode := true
+    Common_Notify("resizeM", "resizeM ON (Esc / Q で終了)", 2, 1)
+}
+
+ExitResizeMode() {
+    global gResizeMode
+    gResizeMode := false
+    Common_Notify("resizeM", "resizeM OFF", 1, 1)
+}
+
+; 常時ホットキー
+#^+r::Reload
+#^+q::{
+    ExitResizeMode()
+    Common_Notify("AHK", "モーダル状態をリセットしました", 2, 1)
+}
+
+; アプリ起動/前面化して最大化
+!e::ActivateOrRunAndMaximize("Explorer", ["explorer.exe"])
+!g::ActivateOrRunAndMaximize("Slack", ["slack.exe"])
+!m::ActivateOrRunAndMaximize("Firefox", ["firefox.exe"])
+!/::ActivateOrRunAndMaximize("Asana", ["Asana.exe", "asana.exe"])
+!n::ActivateOrRunAndMaximize("Wezterm", ["wezterm-gui.exe", "wezterm.exe"])
+!,::ActivateOrRunAndMaximize("Obsidian", ["Obsidian.exe"])
+!.::ActivateOrRunAndMaximize("Google Chrome", ["chrome.exe"])
+
+; Pomodoro (25:00 fixed)
+!d::PomodoroTimer.toggle()
+!+d::PomodoroTimer.skip()
+!^d::PomodoroTimer.reset()
+
+; 画面/ウィンドウ操作（KEYBINDINGS準拠寄り）
+!^h::WindowManager.moveToMonitorAndMaximize("left")
+!^j::WindowManager.moveToMonitorAndMaximize("down")
+!^k::WindowManager.moveToMonitorAndMaximize("up")
+!^l::WindowManager.moveToMonitorAndMaximize("right")
+
+!+h::WindowManager.moveHalf("left")
+!+j::WindowManager.moveHalf("bottom")
+!+k::WindowManager.moveHalf("top")
+!+l::WindowManager.moveHalf("right")
+
+!t::WindowManager.nextWindowInSameApp(true, true)
+^!f::WindowManager.nextWindowGlobal(true, true)
+
+; resizeM mode trigger (tentative)
+!+Space::EnterResizeMode()
+
+#HotIf gResizeMode
+Esc::ExitResizeMode()
+q::ExitResizeMode()
++q::ExitResizeMode()
+
+a::WindowManager.nudge(-24, 0)
+d::WindowManager.nudge(24, 0)
+w::WindowManager.nudge(0, -24)
+s::WindowManager.nudge(0, 24)
+
+h::WindowManager.moveHalf("left")
+l::WindowManager.moveHalf("right")
+k::WindowManager.moveHalf("top")
+j::WindowManager.moveHalf("bottom")
+
+y::WindowManager.moveToGrid(0, 0, 2, 2)
+o::WindowManager.moveToGrid(0, 1, 2, 2)
+u::WindowManager.moveToGrid(1, 0, 2, 2)
+i::WindowManager.moveToGrid(1, 1, 2, 2)
+
+f::WindowManager.maximizeActive()
+c::WindowManager.moveCenter()
+=::WindowManager.resizeBy(80, 80)
+-::WindowManager.resizeBy(-80, -80)
++h::WindowManager.resizeEdge("left", 24)
++l::WindowManager.resizeEdge("right", 24)
++k::WindowManager.resizeEdge("top", 24)
++j::WindowManager.resizeEdge("bottom", 24)
+
+Left::WindowManager.moveToMonitor("left")
+Right::WindowManager.moveToMonitor("right")
+Up::WindowManager.moveToMonitor("up")
+Down::WindowManager.moveToMonitor("down")
+Space::WindowManager.moveToMonitor("next")
+[::WindowManager.restorePrevious()
+vkC0::WindowManager.moveCursorToActiveWindowCenter()
+#HotIf
+
+; 互換の既存ホットキー (Win + Alt)
 #!Left::WindowManager.moveHalf("left")
 #!Right::WindowManager.moveHalf("right")
 #!Up::WindowManager.moveHalf("top")
 #!Down::WindowManager.moveHalf("bottom")
 
-; 四隅 (Win + Alt + テンキー)
 #!Numpad7::WindowManager.moveToGrid(0, 0, 2, 2)
 #!Numpad9::WindowManager.moveToGrid(0, 1, 2, 2)
 #!Numpad1::WindowManager.moveToGrid(1, 0, 2, 2)
 #!Numpad3::WindowManager.moveToGrid(1, 1, 2, 2)
 
-; モニタ間移動 (Win + Alt + Enter / Backspace)
 #!Enter::WindowManager.moveToMonitor("next")
 #!Backspace::WindowManager.moveToMonitor("prev")
 
-; 微調整 (Win + Alt + Ctrl + 矢印)
 #!^Left::WindowManager.nudge(-10, 0)
 #!^Right::WindowManager.nudge(10, 0)
 #!^Up::WindowManager.nudge(0, -10)
 #!^Down::WindowManager.nudge(0, 10)
 
-; 常に最前面トグル (Win + Alt + Space)
 #!Space::WindowManager.toggleAlwaysOnTop()

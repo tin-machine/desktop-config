@@ -25,14 +25,14 @@
 | `alt + d` | Pomodoro 開始/一時停止 | `private/config.lua` |
 | `alt + shift + d` | Pomodoro 次フェーズへスキップ | `private/config.lua` |
 | `alt + ctrl + d` | Pomodoro リセット（25:00） | `private/config.lua` |
-| `alt + shift + h` | 左ディスプレイに移動して最大化 | `private/config.lua` |
-| `alt + shift + j` | 下ディスプレイに移動して最大化 | `private/config.lua` |
-| `alt + shift + k` | 上ディスプレイに移動して最大化 | `private/config.lua` |
-| `alt + shift + l` | 右ディスプレイに移動して最大化 | `private/config.lua` |
-| `alt + ctrl + h` | 左半分に配置 | `private/config.lua` |
-| `alt + ctrl + j` | 下半分に配置 | `private/config.lua` |
-| `alt + ctrl + k` | 上半分に配置 | `private/config.lua` |
-| `alt + ctrl + l` | 右半分に配置 | `private/config.lua` |
+| `alt + ctrl + h` | 左ディスプレイに移動して最大化 | `private/config.lua` |
+| `alt + ctrl + j` | 下ディスプレイに移動して最大化 | `private/config.lua` |
+| `alt + ctrl + k` | 上ディスプレイに移動して最大化 | `private/config.lua` |
+| `alt + ctrl + l` | 右ディスプレイに移動して最大化 | `private/config.lua` |
+| `alt + shift + h` | 左半分に配置 | `private/config.lua` |
+| `alt + shift + j` | 下半分に配置 | `private/config.lua` |
+| `alt + shift + k` | 上半分に配置 | `private/config.lua` |
+| `alt + shift + l` | 右半分に配置 | `private/config.lua` |
 | `alt + t` | 前面アプリ内で次のウィンドウへ移動 | `private/config.lua` |
 | `ctrl + alt + f` | `hs.window.switcher.nextWindow()` | `private/config.lua` |
 
