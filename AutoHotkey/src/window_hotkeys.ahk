@@ -146,6 +146,12 @@ ExitResizeMode() {
 ; Win + C: Ctrl + C を送信してコピーする
 #c::Send "^c"
 
+; Win + F: Ctrl + F を送信して検索する
+#f::Send "^f"
+
+; Win + K: Ctrl + K を送信してアプリ側のリンク操作や検索欄移動を呼ぶ
+#k::Send "^k"
+
 ; Win + V: Ctrl + V を送信して貼り付ける
 #v::Send "^v"
 
