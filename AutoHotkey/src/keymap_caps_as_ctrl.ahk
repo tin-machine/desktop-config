@@ -4,4 +4,5 @@
 SetCapsLockState "AlwaysOff"
 
 ; 将来 Hyper キー化する場合はここで条件分岐する
+; CapsLock: Ctrl として入力する
 CapsLock::Ctrl

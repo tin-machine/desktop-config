@@ -3,6 +3,8 @@
 #Warn
 
 ; エントリポイント: 設定の読み込みとモジュールの #Include
+; AutoHotkey の修飾キー表記: ! = Alt, ^ = Ctrl, + = Shift, # = Windowsキー
+; キーバインド本体は keymap_*.ahk と window_hotkeys.ahk に記述する。
 #Include "lib/common.ahk"
 #Include "lib/window_manager.ahk"
 #Include "keymap_caps_as_ctrl.ahk"

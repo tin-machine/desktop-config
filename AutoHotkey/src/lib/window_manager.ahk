@@ -1,6 +1,8 @@
 #Requires AutoHotkey v2.0
 #Include "common.ahk"
 
+; ウィンドウ操作の実装のみ。実際のキーバインドは window_hotkeys.ahk で割り当てる。
+
 class WindowManager {
     static snapGrid := 16
     static historyByHwnd := Map()

@@ -1,6 +1,7 @@
 #Requires AutoHotkey v2.0
 
 ; US101 / JIS 配列差分を吸収するための将来拡張用ファイル。
+; 現時点では有効なキーバインドなし。
 ; EnableFutureUSJIS が true のときだけ読み込む想定。
 try {
     if (!IsSet(UserConfig) || !UserConfig.Has("EnableFutureUSJIS") || !UserConfig["EnableFutureUSJIS"]) {

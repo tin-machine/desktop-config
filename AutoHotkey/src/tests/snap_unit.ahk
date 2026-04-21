@@ -2,6 +2,8 @@
 #SingleInstance Force
 #Include "..\lib\window_manager.ahk"
 
+; snap 関数のユニットテストのみ。キーバインド定義はない。
+
 AssertEqual(expected, actual, label := "") {
     if (expected != actual) {
         MsgBox Format("[FAIL] {} Expected: {} Actual: {}", label, expected, actual)

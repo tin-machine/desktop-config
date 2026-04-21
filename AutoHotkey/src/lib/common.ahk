@@ -1,5 +1,7 @@
 #Requires AutoHotkey v2.0
 
+; 共通関数のみ。キーバインド定義は window_hotkeys.ahk などに置く。
+
 ; 最低限のログ出力。必要に応じて拡張予定。
 Common_Log(message) {
     ts := FormatTime(, "yyyy-MM-dd HH:mm:ss")
