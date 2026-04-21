@@ -2,6 +2,8 @@
 #SingleInstance Force
 #Warn
 
+global gResizeMode := false
+
 ; エントリポイント: 設定の読み込みとモジュールの #Include
 ; AutoHotkey の修飾キー表記: ! = Alt, ^ = Ctrl, + = Shift, # = Windowsキー
 ; キーバインド本体は keymap_*.ahk と window_hotkeys.ahk に記述する。
