@@ -9,7 +9,7 @@
   keyCode('return')と渡すとキーコードを返してくれるような関数っぽい
 ]]
 local winops = require("winops")
-local pomodoro = require("pomodoro")
+-- local pomodoro = require("pomodoro")
 
 local function keyCode(key, modifiers)
    modifiers = modifiers or {}

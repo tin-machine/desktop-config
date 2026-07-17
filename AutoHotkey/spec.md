@@ -54,6 +54,7 @@ AutoHotkey/
 - 常時:
   - `Win+Ctrl+Shift+R`: スクリプト再読み込み
   - `Win+Ctrl+Shift+Q`: モード状態リセット
+  - `Win+c/f/k/v/w`: `Ctrl+c/f/k/v/w` を送信
 - アプリ起動/前面化+最大化:
   - `Alt+e/g/m//n/,/.` (`Explorer/Slack/Firefox/Asana/WezTerm/Obsidian/Chrome`)
 - Pomodoro:
@@ -71,6 +72,12 @@ AutoHotkey/
   - 内容: 移動、半分/四隅配置、中央、拡縮、方向モニタ移動、Undo、カーソル中央
 - 互換:
   - 既存 `Win+Alt` 系ショートカット群を残置 (`#!Left` など)
+- Windows 標準ショートカットとの重なり:
+  - `Win+C`: Copilot または Search を上書き
+  - `Win+F`: Feedback Hub を上書き
+  - `Win+K`: Cast を上書き
+  - `Win+V`: クリップボード履歴を上書き
+  - `Win+W`: Widgets を上書き
 
 ## Keymaps
 - `keymap_caps_as_ctrl.ahk`: `SetCapsLockState "AlwaysOff"` + `CapsLock::Ctrl` で Caps を完全に Ctrl 化。コメントで将来 Hyper キー化案への分岐余地を残す。
