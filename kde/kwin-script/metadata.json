@@ -1,0 +1,19 @@
+{
+  "KPlugin": {
+    "Name": "Desktop Config Window Actions",
+    "Description": "Cross-platform window actions for the desktop-config keybinding contract",
+    "Icon": "preferences-system-windows",
+    "Authors": [
+      {
+        "Name": "tin-machine"
+      }
+    ],
+    "Id": "desktop-config-window-actions",
+    "Version": "0.1.0",
+    "License": "MIT",
+    "Website": "https://github.com/tin-machine/desktop-config"
+  },
+  "X-Plasma-API": "javascript",
+  "X-Plasma-MainScript": "code/main.js",
+  "KPackageStructure": "KWin/Script"
+}
