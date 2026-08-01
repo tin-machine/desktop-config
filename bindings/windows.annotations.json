@@ -1,0 +1,121 @@
+[
+  {
+    "action": "resize_mode_enter",
+    "context": "global",
+    "key": "alt+shift+space",
+    "source": "AutoHotkey/src/window_hotkeys.ahk",
+    "evidence": "!+Space::EnterResizeMode()"
+  },
+  {
+    "action": "half_left",
+    "context": "global",
+    "key": "alt+shift+h",
+    "source": "AutoHotkey/src/window_hotkeys.ahk",
+    "evidence": "!+h::WindowManager.moveHalf(\"left\")"
+  },
+  {
+    "action": "half_bottom",
+    "context": "global",
+    "key": "alt+shift+j",
+    "source": "AutoHotkey/src/window_hotkeys.ahk",
+    "evidence": "!+j::WindowManager.moveHalf(\"bottom\")"
+  },
+  {
+    "action": "half_top",
+    "context": "global",
+    "key": "alt+shift+k",
+    "source": "AutoHotkey/src/window_hotkeys.ahk",
+    "evidence": "!+k::WindowManager.moveHalf(\"top\")"
+  },
+  {
+    "action": "half_right",
+    "context": "global",
+    "key": "alt+shift+l",
+    "source": "AutoHotkey/src/window_hotkeys.ahk",
+    "evidence": "!+l::WindowManager.moveHalf(\"right\")"
+  },
+  {
+    "action": "monitor_left_maximize",
+    "context": "global",
+    "key": "alt+ctrl+h",
+    "source": "AutoHotkey/src/window_hotkeys.ahk",
+    "evidence": "!^h::WindowManager.moveToMonitorAndMaximize(\"left\")"
+  },
+  {
+    "action": "monitor_down_maximize",
+    "context": "global",
+    "key": "alt+ctrl+j",
+    "source": "AutoHotkey/src/window_hotkeys.ahk",
+    "evidence": "!^j::WindowManager.moveToMonitorAndMaximize(\"down\")"
+  },
+  {
+    "action": "monitor_up_maximize",
+    "context": "global",
+    "key": "alt+ctrl+k",
+    "source": "AutoHotkey/src/window_hotkeys.ahk",
+    "evidence": "!^k::WindowManager.moveToMonitorAndMaximize(\"up\")"
+  },
+  {
+    "action": "monitor_right_maximize",
+    "context": "global",
+    "key": "alt+ctrl+l",
+    "source": "AutoHotkey/src/window_hotkeys.ahk",
+    "evidence": "!^l::WindowManager.moveToMonitorAndMaximize(\"right\")"
+  },
+  {
+    "action": "corner_nw",
+    "context": "resizeM",
+    "key": "y",
+    "source": "AutoHotkey/src/window_hotkeys.ahk",
+    "evidence": "y::WindowManager.moveToGrid(0, 0, 2, 2)"
+  },
+  {
+    "action": "corner_ne",
+    "context": "resizeM",
+    "key": "o",
+    "source": "AutoHotkey/src/window_hotkeys.ahk",
+    "evidence": "o::WindowManager.moveToGrid(0, 1, 2, 2)"
+  },
+  {
+    "action": "corner_sw",
+    "context": "resizeM",
+    "key": "u",
+    "source": "AutoHotkey/src/window_hotkeys.ahk",
+    "evidence": "u::WindowManager.moveToGrid(1, 0, 2, 2)"
+  },
+  {
+    "action": "corner_se",
+    "context": "resizeM",
+    "key": "i",
+    "source": "AutoHotkey/src/window_hotkeys.ahk",
+    "evidence": "i::WindowManager.moveToGrid(1, 1, 2, 2)"
+  },
+  {
+    "action": "maximize",
+    "context": "resizeM",
+    "key": "f",
+    "source": "AutoHotkey/src/window_hotkeys.ahk",
+    "evidence": "f::WindowManager.maximizeActive()"
+  },
+  {
+    "action": "center",
+    "context": "resizeM",
+    "key": "c",
+    "source": "AutoHotkey/src/window_hotkeys.ahk",
+    "evidence": "c::WindowManager.moveCenter()"
+  },
+  {
+    "action": "monitor_next",
+    "context": "resizeM",
+    "key": "space",
+    "source": "AutoHotkey/src/window_hotkeys.ahk",
+    "evidence": "Space::WindowManager.moveToMonitor(\"next\")"
+  },
+  {
+    "action": "undo_window_operation",
+    "context": "resizeM",
+    "key": "[",
+    "source": "AutoHotkey/src/window_hotkeys.ahk",
+    "evidence": "[::WindowManager.restorePrevious()"
+  }
+]
