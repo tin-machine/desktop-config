@@ -1,0 +1,501 @@
+{
+  "version": 1,
+  "platforms": [
+    "macos",
+    "windows",
+    "kde"
+  ],
+  "platform_labels": {
+    "macos": "macOS / Hammerspoon",
+    "windows": "Windows / AutoHotkey",
+    "kde": "KDE Plasma / KWin"
+  },
+  "manifests": {
+    "macos": "bindings/macos.annotations.json",
+    "windows": "bindings/windows.annotations.json",
+    "kde": "bindings/kde.annotations.json"
+  },
+  "actions": [
+    {
+      "id": "resize_mode_enter",
+      "description": "ウィンドウ操作モードへ入る",
+      "canonical": {
+        "context": "global",
+        "key": "cmd+r"
+      },
+      "bindings": {
+        "macos": {
+          "context": "global",
+          "key": "cmd+r"
+        },
+        "windows": {
+          "context": "global",
+          "key": "alt+shift+space"
+        }
+      },
+      "required_platforms": [
+        "macos",
+        "windows"
+      ],
+      "divergence_reasons": {
+        "windows": "WindowsではWin系標準ショートカットとの競合を避け、Alt+Shift+Spaceを使用する。"
+      }
+    },
+    {
+      "id": "half_left",
+      "description": "左半分へ配置",
+      "canonical": {
+        "context": "global",
+        "key": "alt+shift+h"
+      },
+      "bindings": {
+        "macos": {
+          "context": "global",
+          "key": "alt+shift+h"
+        },
+        "windows": {
+          "context": "global",
+          "key": "alt+shift+h"
+        },
+        "kde": {
+          "context": "global",
+          "key": "alt+shift+h"
+        }
+      },
+      "required_platforms": [
+        "macos",
+        "windows",
+        "kde"
+      ]
+    },
+    {
+      "id": "half_bottom",
+      "description": "下半分へ配置",
+      "canonical": {
+        "context": "global",
+        "key": "alt+shift+j"
+      },
+      "bindings": {
+        "macos": {
+          "context": "global",
+          "key": "alt+shift+j"
+        },
+        "windows": {
+          "context": "global",
+          "key": "alt+shift+j"
+        },
+        "kde": {
+          "context": "global",
+          "key": "alt+shift+j"
+        }
+      },
+      "required_platforms": [
+        "macos",
+        "windows",
+        "kde"
+      ]
+    },
+    {
+      "id": "half_top",
+      "description": "上半分へ配置",
+      "canonical": {
+        "context": "global",
+        "key": "alt+shift+k"
+      },
+      "bindings": {
+        "macos": {
+          "context": "global",
+          "key": "alt+shift+k"
+        },
+        "windows": {
+          "context": "global",
+          "key": "alt+shift+k"
+        },
+        "kde": {
+          "context": "global",
+          "key": "alt+shift+k"
+        }
+      },
+      "required_platforms": [
+        "macos",
+        "windows",
+        "kde"
+      ]
+    },
+    {
+      "id": "half_right",
+      "description": "右半分へ配置",
+      "canonical": {
+        "context": "global",
+        "key": "alt+shift+l"
+      },
+      "bindings": {
+        "macos": {
+          "context": "global",
+          "key": "alt+shift+l"
+        },
+        "windows": {
+          "context": "global",
+          "key": "alt+shift+l"
+        },
+        "kde": {
+          "context": "global",
+          "key": "alt+shift+l"
+        }
+      },
+      "required_platforms": [
+        "macos",
+        "windows",
+        "kde"
+      ]
+    },
+    {
+      "id": "monitor_left_maximize",
+      "description": "左モニターへ移動して最大化",
+      "canonical": {
+        "context": "global",
+        "key": "alt+ctrl+h"
+      },
+      "bindings": {
+        "macos": {
+          "context": "global",
+          "key": "alt+ctrl+h"
+        },
+        "windows": {
+          "context": "global",
+          "key": "alt+ctrl+h"
+        },
+        "kde": {
+          "context": "global",
+          "key": "alt+ctrl+h"
+        }
+      },
+      "required_platforms": [
+        "macos",
+        "windows",
+        "kde"
+      ]
+    },
+    {
+      "id": "monitor_down_maximize",
+      "description": "下モニターへ移動して最大化",
+      "canonical": {
+        "context": "global",
+        "key": "alt+ctrl+j"
+      },
+      "bindings": {
+        "macos": {
+          "context": "global",
+          "key": "alt+ctrl+j"
+        },
+        "windows": {
+          "context": "global",
+          "key": "alt+ctrl+j"
+        },
+        "kde": {
+          "context": "global",
+          "key": "alt+ctrl+j"
+        }
+      },
+      "required_platforms": [
+        "macos",
+        "windows",
+        "kde"
+      ]
+    },
+    {
+      "id": "monitor_up_maximize",
+      "description": "上モニターへ移動して最大化",
+      "canonical": {
+        "context": "global",
+        "key": "alt+ctrl+k"
+      },
+      "bindings": {
+        "macos": {
+          "context": "global",
+          "key": "alt+ctrl+k"
+        },
+        "windows": {
+          "context": "global",
+          "key": "alt+ctrl+k"
+        },
+        "kde": {
+          "context": "global",
+          "key": "alt+ctrl+k"
+        }
+      },
+      "required_platforms": [
+        "macos",
+        "windows",
+        "kde"
+      ]
+    },
+    {
+      "id": "monitor_right_maximize",
+      "description": "右モニターへ移動して最大化",
+      "canonical": {
+        "context": "global",
+        "key": "alt+ctrl+l"
+      },
+      "bindings": {
+        "macos": {
+          "context": "global",
+          "key": "alt+ctrl+l"
+        },
+        "windows": {
+          "context": "global",
+          "key": "alt+ctrl+l"
+        },
+        "kde": {
+          "context": "global",
+          "key": "alt+ctrl+l"
+        }
+      },
+      "required_platforms": [
+        "macos",
+        "windows",
+        "kde"
+      ]
+    },
+    {
+      "id": "corner_nw",
+      "description": "左上四分割へ配置",
+      "canonical": {
+        "context": "resizeM",
+        "key": "y"
+      },
+      "bindings": {
+        "macos": {
+          "context": "resizeM",
+          "key": "y"
+        },
+        "windows": {
+          "context": "resizeM",
+          "key": "y"
+        },
+        "kde": {
+          "context": "global",
+          "key": "meta+alt+y"
+        }
+      },
+      "required_platforms": [
+        "macos",
+        "windows",
+        "kde"
+      ],
+      "divergence_reasons": {
+        "kde": "KWin Scriptは裸キーを安全に取得するモーダル入力APIを持たないため、Meta+Alt付きグローバルショートカットを使用する。"
+      }
+    },
+    {
+      "id": "corner_ne",
+      "description": "右上四分割へ配置",
+      "canonical": {
+        "context": "resizeM",
+        "key": "o"
+      },
+      "bindings": {
+        "macos": {
+          "context": "resizeM",
+          "key": "o"
+        },
+        "windows": {
+          "context": "resizeM",
+          "key": "o"
+        },
+        "kde": {
+          "context": "global",
+          "key": "meta+alt+o"
+        }
+      },
+      "required_platforms": [
+        "macos",
+        "windows",
+        "kde"
+      ],
+      "divergence_reasons": {
+        "kde": "KWin Scriptは裸キーを安全に取得するモーダル入力APIを持たないため、Meta+Alt付きグローバルショートカットを使用する。"
+      }
+    },
+    {
+      "id": "corner_sw",
+      "description": "左下四分割へ配置",
+      "canonical": {
+        "context": "resizeM",
+        "key": "u"
+      },
+      "bindings": {
+        "macos": {
+          "context": "resizeM",
+          "key": "u"
+        },
+        "windows": {
+          "context": "resizeM",
+          "key": "u"
+        },
+        "kde": {
+          "context": "global",
+          "key": "meta+alt+u"
+        }
+      },
+      "required_platforms": [
+        "macos",
+        "windows",
+        "kde"
+      ],
+      "divergence_reasons": {
+        "kde": "KWin Scriptは裸キーを安全に取得するモーダル入力APIを持たないため、Meta+Alt付きグローバルショートカットを使用する。"
+      }
+    },
+    {
+      "id": "corner_se",
+      "description": "右下四分割へ配置",
+      "canonical": {
+        "context": "resizeM",
+        "key": "i"
+      },
+      "bindings": {
+        "macos": {
+          "context": "resizeM",
+          "key": "i"
+        },
+        "windows": {
+          "context": "resizeM",
+          "key": "i"
+        },
+        "kde": {
+          "context": "global",
+          "key": "meta+alt+i"
+        }
+      },
+      "required_platforms": [
+        "macos",
+        "windows",
+        "kde"
+      ],
+      "divergence_reasons": {
+        "kde": "KWin Scriptは裸キーを安全に取得するモーダル入力APIを持たないため、Meta+Alt付きグローバルショートカットを使用する。"
+      }
+    },
+    {
+      "id": "maximize",
+      "description": "最大化",
+      "canonical": {
+        "context": "resizeM",
+        "key": "f"
+      },
+      "bindings": {
+        "macos": {
+          "context": "resizeM",
+          "key": "f"
+        },
+        "windows": {
+          "context": "resizeM",
+          "key": "f"
+        },
+        "kde": {
+          "context": "global",
+          "key": "meta+alt+f"
+        }
+      },
+      "required_platforms": [
+        "macos",
+        "windows",
+        "kde"
+      ],
+      "divergence_reasons": {
+        "kde": "KWinではresizeMを設けず、Meta+Alt付きグローバルショートカットとして提供する。"
+      }
+    },
+    {
+      "id": "center",
+      "description": "現在のモニター中央へ配置",
+      "canonical": {
+        "context": "resizeM",
+        "key": "c"
+      },
+      "bindings": {
+        "macos": {
+          "context": "resizeM",
+          "key": "c"
+        },
+        "windows": {
+          "context": "resizeM",
+          "key": "c"
+        },
+        "kde": {
+          "context": "global",
+          "key": "meta+alt+c"
+        }
+      },
+      "required_platforms": [
+        "macos",
+        "windows",
+        "kde"
+      ],
+      "divergence_reasons": {
+        "kde": "KWinではresizeMを設けず、Meta+Alt付きグローバルショートカットとして提供する。"
+      }
+    },
+    {
+      "id": "monitor_next",
+      "description": "次のモニターへ移動",
+      "canonical": {
+        "context": "resizeM",
+        "key": "space"
+      },
+      "bindings": {
+        "macos": {
+          "context": "resizeM",
+          "key": "space"
+        },
+        "windows": {
+          "context": "resizeM",
+          "key": "space"
+        },
+        "kde": {
+          "context": "global",
+          "key": "meta+alt+space"
+        }
+      },
+      "required_platforms": [
+        "macos",
+        "windows",
+        "kde"
+      ],
+      "divergence_reasons": {
+        "kde": "KWinではresizeMを設けず、Meta+Alt付きグローバルショートカットとして提供する。"
+      }
+    },
+    {
+      "id": "undo_window_operation",
+      "description": "直前のウィンドウ配置を復元",
+      "canonical": {
+        "context": "resizeM",
+        "key": "["
+      },
+      "bindings": {
+        "macos": {
+          "context": "resizeM",
+          "key": "["
+        },
+        "windows": {
+          "context": "resizeM",
+          "key": "["
+        },
+        "kde": {
+          "context": "global",
+          "key": "meta+alt+["
+        }
+      },
+      "required_platforms": [
+        "macos",
+        "windows",
+        "kde"
+      ],
+      "divergence_reasons": {
+        "kde": "KWinではresizeMを設けず、Meta+Alt付きグローバルショートカットとして提供する。"
+      }
+    }
+  ]
+}
