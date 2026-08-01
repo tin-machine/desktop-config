@@ -1,0 +1,114 @@
+[
+  {
+    "action": "half_left",
+    "context": "global",
+    "key": "alt+shift+h",
+    "source": "kde/kwin-script/contents/code/main.js",
+    "evidence": "// @binding action=half_left context=global key=alt+shift+h"
+  },
+  {
+    "action": "half_bottom",
+    "context": "global",
+    "key": "alt+shift+j",
+    "source": "kde/kwin-script/contents/code/main.js",
+    "evidence": "// @binding action=half_bottom context=global key=alt+shift+j"
+  },
+  {
+    "action": "half_top",
+    "context": "global",
+    "key": "alt+shift+k",
+    "source": "kde/kwin-script/contents/code/main.js",
+    "evidence": "// @binding action=half_top context=global key=alt+shift+k"
+  },
+  {
+    "action": "half_right",
+    "context": "global",
+    "key": "alt+shift+l",
+    "source": "kde/kwin-script/contents/code/main.js",
+    "evidence": "// @binding action=half_right context=global key=alt+shift+l"
+  },
+  {
+    "action": "monitor_left_maximize",
+    "context": "global",
+    "key": "alt+ctrl+h",
+    "source": "kde/kwin-script/contents/code/main.js",
+    "evidence": "// @binding action=monitor_left_maximize context=global key=alt+ctrl+h"
+  },
+  {
+    "action": "monitor_down_maximize",
+    "context": "global",
+    "key": "alt+ctrl+j",
+    "source": "kde/kwin-script/contents/code/main.js",
+    "evidence": "// @binding action=monitor_down_maximize context=global key=alt+ctrl+j"
+  },
+  {
+    "action": "monitor_up_maximize",
+    "context": "global",
+    "key": "alt+ctrl+k",
+    "source": "kde/kwin-script/contents/code/main.js",
+    "evidence": "// @binding action=monitor_up_maximize context=global key=alt+ctrl+k"
+  },
+  {
+    "action": "monitor_right_maximize",
+    "context": "global",
+    "key": "alt+ctrl+l",
+    "source": "kde/kwin-script/contents/code/main.js",
+    "evidence": "// @binding action=monitor_right_maximize context=global key=alt+ctrl+l"
+  },
+  {
+    "action": "corner_nw",
+    "context": "global",
+    "key": "meta+alt+y",
+    "source": "kde/kwin-script/contents/code/main.js",
+    "evidence": "// @binding action=corner_nw context=global key=meta+alt+y"
+  },
+  {
+    "action": "corner_ne",
+    "context": "global",
+    "key": "meta+alt+o",
+    "source": "kde/kwin-script/contents/code/main.js",
+    "evidence": "// @binding action=corner_ne context=global key=meta+alt+o"
+  },
+  {
+    "action": "corner_sw",
+    "context": "global",
+    "key": "meta+alt+u",
+    "source": "kde/kwin-script/contents/code/main.js",
+    "evidence": "// @binding action=corner_sw context=global key=meta+alt+u"
+  },
+  {
+    "action": "corner_se",
+    "context": "global",
+    "key": "meta+alt+i",
+    "source": "kde/kwin-script/contents/code/main.js",
+    "evidence": "// @binding action=corner_se context=global key=meta+alt+i"
+  },
+  {
+    "action": "maximize",
+    "context": "global",
+    "key": "meta+alt+f",
+    "source": "kde/kwin-script/contents/code/main.js",
+    "evidence": "// @binding action=maximize context=global key=meta+alt+f"
+  },
+  {
+    "action": "center",
+    "context": "global",
+    "key": "meta+alt+c",
+    "source": "kde/kwin-script/contents/code/main.js",
+    "evidence": "// @binding action=center context=global key=meta+alt+c"
+  },
+  {
+    "action": "monitor_next",
+    "context": "global",
+    "key": "meta+alt+space",
+    "source": "kde/kwin-script/contents/code/main.js",
+    "evidence": "// @binding action=monitor_next context=global key=meta+alt+space"
+  },
+  {
+    "action": "undo_window_operation",
+    "context": "global",
+    "key": "meta+alt+[",
+    "source": "kde/kwin-script/contents/code/main.js",
+    "evidence": "// @binding action=undo_window_operation context=global key=meta+alt+["
+  }
+]
