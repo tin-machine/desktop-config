@@ -1,0 +1,30 @@
+name: keybinding-consistency
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Validate cross-platform contract
+        run: python scripts/check_binding_consistency.py
+
+      - name: Check generated documentation
+        run: python scripts/generate_keybindings_doc.py --check
+
+      - name: Check KWin JavaScript syntax
+        run: node --check kde/kwin-script/contents/code/main.js
