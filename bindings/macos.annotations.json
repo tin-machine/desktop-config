@@ -1,0 +1,121 @@
+[
+  {
+    "action": "resize_mode_enter",
+    "context": "global",
+    "key": "cmd+r",
+    "source": "hammerspoon/init.lua",
+    "evidence": "hsresizeM_keys = hsresizeM_keys or {{\"cmd\", \"R\"}}"
+  },
+  {
+    "action": "half_left",
+    "context": "global",
+    "key": "alt+shift+h",
+    "source": "hammerspoon/private/config.lua",
+    "evidence": "hs.hotkey.bind({'alt', 'shift'}, 'h', function()"
+  },
+  {
+    "action": "half_bottom",
+    "context": "global",
+    "key": "alt+shift+j",
+    "source": "hammerspoon/private/config.lua",
+    "evidence": "hs.hotkey.bind({'alt', 'shift'}, 'j', function()"
+  },
+  {
+    "action": "half_top",
+    "context": "global",
+    "key": "alt+shift+k",
+    "source": "hammerspoon/private/config.lua",
+    "evidence": "hs.hotkey.bind({'alt', 'shift'}, 'k', function()"
+  },
+  {
+    "action": "half_right",
+    "context": "global",
+    "key": "alt+shift+l",
+    "source": "hammerspoon/private/config.lua",
+    "evidence": "hs.hotkey.bind({'alt', 'shift'}, 'l', function()"
+  },
+  {
+    "action": "monitor_left_maximize",
+    "context": "global",
+    "key": "alt+ctrl+h",
+    "source": "hammerspoon/private/config.lua",
+    "evidence": "hs.hotkey.bind({'alt', 'ctrl'}, 'h', function()"
+  },
+  {
+    "action": "monitor_down_maximize",
+    "context": "global",
+    "key": "alt+ctrl+j",
+    "source": "hammerspoon/private/config.lua",
+    "evidence": "hs.hotkey.bind({'alt', 'ctrl'}, 'j', function()"
+  },
+  {
+    "action": "monitor_up_maximize",
+    "context": "global",
+    "key": "alt+ctrl+k",
+    "source": "hammerspoon/private/config.lua",
+    "evidence": "hs.hotkey.bind({'alt', 'ctrl'}, 'k', function()"
+  },
+  {
+    "action": "monitor_right_maximize",
+    "context": "global",
+    "key": "alt+ctrl+l",
+    "source": "hammerspoon/private/config.lua",
+    "evidence": "hs.hotkey.bind({'alt', 'ctrl'}, 'l', function()"
+  },
+  {
+    "action": "corner_nw",
+    "context": "resizeM",
+    "key": "y",
+    "source": "hammerspoon/init.lua",
+    "evidence": "cmodal:bind('', 'Y', 'NorthWest Corner'"
+  },
+  {
+    "action": "corner_ne",
+    "context": "resizeM",
+    "key": "o",
+    "source": "hammerspoon/init.lua",
+    "evidence": "cmodal:bind('', 'O', 'NorthEast Corner'"
+  },
+  {
+    "action": "corner_sw",
+    "context": "resizeM",
+    "key": "u",
+    "source": "hammerspoon/init.lua",
+    "evidence": "cmodal:bind('', 'U', 'SouthWest Corner'"
+  },
+  {
+    "action": "corner_se",
+    "context": "resizeM",
+    "key": "i",
+    "source": "hammerspoon/init.lua",
+    "evidence": "cmodal:bind('', 'I', 'SouthEast Corner'"
+  },
+  {
+    "action": "maximize",
+    "context": "resizeM",
+    "key": "f",
+    "source": "hammerspoon/init.lua",
+    "evidence": "cmodal:bind('', 'F', 'Fullscreen'"
+  },
+  {
+    "action": "center",
+    "context": "resizeM",
+    "key": "c",
+    "source": "hammerspoon/init.lua",
+    "evidence": "cmodal:bind('', 'C', 'Center Window'"
+  },
+  {
+    "action": "monitor_next",
+    "context": "resizeM",
+    "key": "space",
+    "source": "hammerspoon/init.lua",
+    "evidence": "cmodal:bind('', 'space', 'Move to Next Monitor'"
+  },
+  {
+    "action": "undo_window_operation",
+    "context": "resizeM",
+    "key": "[",
+    "source": "hammerspoon/init.lua",
+    "evidence": "cmodal:bind('', '[', 'Undo Window Manipulation'"
+  }
+]
