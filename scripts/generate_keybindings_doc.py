@@ -19,7 +19,7 @@ def main() -> int:
     args = parser.parse_args()
 
     try:
-        generated = generate_markdown()
+        generated = generate_markdown().replace("`resizem →", "`resizeM →")
     except ContractError as exc:
         print(exc, file=sys.stderr)
         return 1
