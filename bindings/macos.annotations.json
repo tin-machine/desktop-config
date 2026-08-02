@@ -4,7 +4,7 @@
     "context": "global",
     "key": "cmd+r",
     "source": "hammerspoon/init.lua",
-    "evidence": "hsresizeM_keys = hsresizeM_keys or {{\"cmd\", \"R\"}}"
+    "evidence": "hsresizeM_keys = hsresizeM_keys or {\"cmd\", \"R\"}"
   },
   {
     "action": "half_left",
