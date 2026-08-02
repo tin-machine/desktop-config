@@ -67,14 +67,8 @@ hs.hotkey.bind({'alt'}, 'g', function()
 end)
 
 -- Firefox にフォーカス
-hs.hotkey.bind({'alt'}, 'm', function()
+hs.hotkey.bind({'alt'}, '.', function()
   hs.application.launchOrFocus("Firefox")
-  winops.moveAndResize("maximize")
-end)
-
--- Asanaにフォーカス
-hs.hotkey.bind({'alt'}, '/', function()
-  hs.application.launchOrFocus("Asana")
   winops.moveAndResize("maximize")
 end)
 
@@ -109,7 +103,7 @@ hs.hotkey.bind({'alt'}, ',', function()
 end)
 
 -- Chrome にフォーカス
-hs.hotkey.bind({'alt'}, '.', function()
+hs.hotkey.bind({'alt'}, 'm', function()
   hs.application.launchOrFocus("Google Chrome")
   winops.moveAndResize("maximize")
 end)
