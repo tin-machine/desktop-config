@@ -57,11 +57,107 @@ function placeFraction(x, y, width, height) {
     });
 }
 
-function moveToScreenAndMaximize(moveCallback) {
-    withHistory(function (window) {
-        moveCallback();
+function outputCenter(output) {
+    var geometry = output.geometry;
+    return {
+        x: geometry.x + geometry.width / 2,
+        y: geometry.y + geometry.height / 2
+    };
+}
+
+function outputMatches(left, right) {
+    return left && right && left.name === right.name;
+}
+
+function directionalOutput(currentOutput, direction) {
+    var screens = workspace.screens;
+    var currentCenter = outputCenter(currentOutput);
+    var bestOutput = null;
+    var bestScore = Number.POSITIVE_INFINITY;
+
+    for (var index = 0; index < screens.length; index += 1) {
+        var candidate = screens[index];
+        if (outputMatches(candidate, currentOutput)) {
+            continue;
+        }
+
+        var candidateCenter = outputCenter(candidate);
+        var deltaX = candidateCenter.x - currentCenter.x;
+        var deltaY = candidateCenter.y - currentCenter.y;
+        var primaryDistance;
+        var perpendicularDistance;
+
+        if (direction === "left") {
+            primaryDistance = -deltaX;
+            perpendicularDistance = Math.abs(deltaY);
+        } else if (direction === "right") {
+            primaryDistance = deltaX;
+            perpendicularDistance = Math.abs(deltaY);
+        } else if (direction === "up") {
+            primaryDistance = -deltaY;
+            perpendicularDistance = Math.abs(deltaX);
+        } else if (direction === "down") {
+            primaryDistance = deltaY;
+            perpendicularDistance = Math.abs(deltaX);
+        } else {
+            print("desktop-config-window-actions: unknown direction " + direction);
+            return null;
+        }
+
+        if (primaryDistance <= 0) {
+            continue;
+        }
+
+        // Prefer the closest output in the requested direction, while strongly
+        // penalizing diagonally offset outputs when a better aligned one exists.
+        var score = primaryDistance + perpendicularDistance * 2;
+        if (score < bestScore) {
+            bestScore = score;
+            bestOutput = candidate;
+        }
+    }
+
+    return bestOutput;
+}
+
+function moveToDirectionalScreenAndMaximize(direction) {
+    var window = activeMovableWindow();
+    if (!window) {
+        return;
+    }
+
+    var targetOutput = directionalOutput(window.output, direction);
+    if (!targetOutput) {
+        print(
+            "desktop-config-window-actions: no output in direction " + direction
+        );
+        return;
+    }
+
+    remember(window);
+
+    var completed = false;
+    function maximizeAfterMove() {
+        if (completed || !outputMatches(window.output, targetOutput)) {
+            return;
+        }
+
+        completed = true;
+        window.outputChanged.disconnect(maximizeAfterMove);
+        workspace.activeWindow = window;
         window.setMaximize(true, true);
-    });
+        print(
+            "desktop-config-window-actions: moved to " +
+            targetOutput.name +
+            " and maximized"
+        );
+    }
+
+    window.outputChanged.connect(maximizeAfterMove);
+    workspace.sendClientToScreen(window, targetOutput);
+
+    // sendClientToScreen can complete synchronously depending on the backend.
+    maximizeAfterMove();
 }
 
 function moveToNextScreen() {
@@ -146,30 +242,22 @@ registerBinding("half_right", "Half Right", "Alt+Shift+L", function () {
 
 // @binding action=monitor_left_maximize context=global key=alt+ctrl+h
 registerBinding("monitor_left_maximize", "Move Left and Maximize", "Alt+Ctrl+H", function () {
-    moveToScreenAndMaximize(function () {
-        workspace.slotWindowToLeftScreen();
-    });
+    moveToDirectionalScreenAndMaximize("left");
 });
 
 // @binding action=monitor_down_maximize context=global key=alt+ctrl+j
 registerBinding("monitor_down_maximize", "Move Down and Maximize", "Alt+Ctrl+J", function () {
-    moveToScreenAndMaximize(function () {
-        workspace.slotWindowToBelowScreen();
-    });
+    moveToDirectionalScreenAndMaximize("down");
 });
 
 // @binding action=monitor_up_maximize context=global key=alt+ctrl+k
 registerBinding("monitor_up_maximize", "Move Up and Maximize", "Alt+Ctrl+K", function () {
-    moveToScreenAndMaximize(function () {
-        workspace.slotWindowToAboveScreen();
-    });
+    moveToDirectionalScreenAndMaximize("up");
 });
 
 // @binding action=monitor_right_maximize context=global key=alt+ctrl+l
 registerBinding("monitor_right_maximize", "Move Right and Maximize", "Alt+Ctrl+L", function () {
-    moveToScreenAndMaximize(function () {
-        workspace.slotWindowToRightScreen();
-    });
+    moveToDirectionalScreenAndMaximize("right");
 });
 
 // @binding action=corner_nw context=global key=meta+alt+y
