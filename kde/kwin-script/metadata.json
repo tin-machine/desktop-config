@@ -9,7 +9,7 @@
       }
     ],
     "Id": "desktop-config-window-actions",
-    "Version": "0.1.0",
+    "Version": "0.1.1",
     "License": "MIT",
     "Website": "https://github.com/tin-machine/desktop-config"
   },
