@@ -25,6 +25,12 @@ qdbus6 org.kde.KWin /KWin reconfigure
 Hammerspoon / AutoHotkey の `Alt+Shift+H/J/K/L` と
 `Alt+Ctrl+H/J/K/L` はそのまま共通化しています。
 
+`Alt+Ctrl+H/J/K/L` は、現在の出力と `workspace.screens` のgeometryから
+方向先の出力を選び、`workspace.sendClientToScreen()` で移動します。
+最大化は移動要求と同時には行わず、対象windowの `outputChanged()` を受けてから
+`setMaximize(true, true)` を実行します。これにより、出力移動処理が後から
+最大化状態を上書きする競合を避けます。
+
 KWin Script の `registerShortcut()` はグローバルショートカットを登録できますが、
 Hammerspoon の `resizeM` のようにモード突入後の修飾なしキーを横取りする用途には
 向きません。そのため、四隅・中央・最大化・Undo・次モニターは
