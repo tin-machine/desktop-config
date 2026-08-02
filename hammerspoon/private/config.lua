@@ -3,6 +3,8 @@
   brew cask install hammerspoon
 ]]
 
+local jiggler = require("jiggler")
+
 --[[ キーコードを取得する
   Karabiner 使えない対策: Hammerspoon で macOS の修飾キーつきホットキーのキーリマップを実現する
   http://qiita.com/naoya@github/items/81027083aeb70b309c14
