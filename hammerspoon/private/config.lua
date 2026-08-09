@@ -155,13 +155,38 @@ hs.hotkey.bind({'alt', 'shift'}, 'l', function()
 end)
 
 -- タスクスイッチャー alt + t
+local appGroups = {
+  {"Slack", "Microsoft Teams"},
+}
+
+local function getGroupWindows(appName)
+  for _, group in ipairs(appGroups) do
+    for _, name in ipairs(group) do
+      if name == appName then
+        local windows = {}
+        for _, groupName in ipairs(group) do
+          local app = hs.application.find(groupName)
+          if app then
+            for _, win in ipairs(app:visibleWindows()) do
+              table.insert(windows, win)
+            end
+          end
+        end
+        return windows
+      end
+    end
+  end
+  return nil
+end
+
 function switchToNextWindow()
     local app = hs.application.frontmostApplication()
-    local windows = app:visibleWindows() -- 現在のアプリのすべての可視ウィンドウを取得
-    -- ウィンドウタイトルでソートする(app:visibleWindows()は都度、変わる配列を返すので
-    -- 「次のウィンドウ」に行きたい場合、都度、変わる配列ではなくソート済みである必要がある。
+    local groupWindows = getGroupWindows(app:name())
+    local windows = groupWindows or app:visibleWindows()
+    -- ウィンドウタイトルでソートする(visibleWindows()は都度、変わる配列を返すので
+    -- 「次のウィンドウ」に行きたい場合、ソート済みである必要がある。
     table.sort(windows, function(a, b) return a:title() < b:title() end)
-    local currentWindow = app:focusedWindow() -- 現在フォーカスされているウィンドウを取得
+    local currentWindow = hs.window.focusedWindow()
     local nextWindowIndex = nil
 
     for i, window in ipairs(windows) do
@@ -176,7 +201,7 @@ function switchToNextWindow()
         nextWindowIndex = 1
     end
 
-    windows[nextWindowIndex]:focus() -- 次のウィンドウにフォーカスを移動
+    windows[nextWindowIndex]:focus()
 end
 
 -- キーボードショートカットを設定（例: Alt + t）
