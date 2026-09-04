@@ -182,7 +182,20 @@ end
 function switchToNextWindow()
     local app = hs.application.frontmostApplication()
     local groupWindows = getGroupWindows(app:name())
-    local windows = groupWindows or app:visibleWindows()
+    local windows
+    if groupWindows then
+        windows = groupWindows
+    else
+        -- 同じBundle IDを持つプロセスが複数ある場合（chrome-debugなど）も含める
+        windows = {}
+        local bundleID = app:bundleID()
+        local allApps = bundleID and hs.application.applicationsForBundleID(bundleID) or {app}
+        for _, a in ipairs(allApps) do
+            for _, win in ipairs(a:visibleWindows()) do
+                table.insert(windows, win)
+            end
+        end
+    end
     -- ウィンドウタイトルでソートする(visibleWindows()は都度、変わる配列を返すので
     -- 「次のウィンドウ」に行きたい場合、ソート済みである必要がある。
     table.sort(windows, function(a, b) return a:title() < b:title() end)
