@@ -1,6 +1,19 @@
 hs.hotkey.alertDuration = 0
 hs.hints.showTitleThresh = 0
 hs.window.animationDuration = 0
+
+-- CLI（hs コマンド）からの調査用に IPC を有効化する。
+-- 登録済みホットキーの確認などを Hammerspoon Console を開かずに行えるようにするため。
+-- インストール先は ~/.local （sudo 不要。/usr/local は root 所有で書けない）。
+-- 失敗しても設定全体を落とさないよう pcall で包む。
+local ok_ipc, ipc = pcall(require, "hs.ipc")
+if ok_ipc then
+    if not hs.fs.pathToAbsolute(os.getenv("HOME") .. "/.local/bin/hs") then
+        pcall(function() ipc.cliInstall(os.getenv("HOME") .. "/.local") end)
+    end
+else
+    print("hs.ipc の読み込みに失敗しました")
+end
 local winops = require("winops")
 local modalmgr = require("modalmgr")
 spoon = spoon or {}
