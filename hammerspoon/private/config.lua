@@ -4,6 +4,7 @@
 ]]
 
 local jiggler = require("jiggler")
+local speak_toggle = require("speak_toggle")
 
 --[[ キーコードを取得する
   Karabiner 使えない対策: Hammerspoon で macOS の修飾キーつきホットキーのキーリマップを実現する
